@@ -88,6 +88,39 @@ python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt
 
 ---
 
+## 🔍 How Labels Are Compared
+
+In this project, we evaluate the accuracy of pretrained image classifiers by comparing:
+
+| Term                | Meaning                                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------------------- |
+| **True Label**      | The real label of the image (e.g., `"golden retriever"`), extracted from the image filename.              |
+| **Predicted Label** | The label predicted by the pretrained CNN (e.g., VGG, ResNet, AlexNet) after analyzing the image content. |
+
+### 🧠 Why is the filename used for the True Label?
+
+Since we don’t have a separate file containing ground truth labels, we use the **filename itself** to extract the actual class.
+For example:
+
+```
+Filename: golden_retriever_01.jpg  
+→ True label: "golden retriever"
+```
+
+This true label is then compared against the classifier’s predicted output.
+
+---
+
+### 🐾 What if the image contains more than one animal?
+
+If an image contains a dog and another animal (like a cat), the classifier may detect **whichever is more visually dominant**.
+The model returns only **one label** per image — it does not support multi-label classification. In such cases:
+
+* If the true label is `"dog"` and prediction is `"cat"` → it's incorrect.
+* If the true label is `"dog"` and prediction is `"dog"` → it's correct (regardless of the other animal).
+
+---
+
 ## ✅ Sample Output
 
 ```
@@ -134,7 +167,9 @@ Feel free to use, fork, or contribute to the project.
 
 ## ✨ Acknowledgements
 
-* [PyTorch Models](https://pytorch.org/vision/stable/models.html)
+* [PyTorch Pretrained Models](https://pytorch.org/vision/stable/models.html)
 * [ImageNet Dataset](http://www.image-net.org/)
-* Udacity - AI Programming with Python Nanodegree
+* Udacity AI Programming with Python Nanodegree (Inspiration)
+
+```
 
