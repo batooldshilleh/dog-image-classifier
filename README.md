@@ -1,19 +1,29 @@
+
 # 🐶 Dog Image Classifier
 
-A Python-based image classification project that utilizes pretrained convolutional neural networks (CNNs) to identify whether an image contains a dog, and if so, determine the dog breed. Built for evaluating model performance across architectures like **VGG**, **ResNet**, and **AlexNet**.
+A Python-based image classification project that uses pretrained convolutional neural networks (CNNs) to identify whether an image contains a dog, and if so, determine its breed. This project supports evaluating three models: **VGG**, **ResNet**, and **AlexNet**.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Detects whether an image contains a **dog** or **not a dog**
-- 🐕 Identifies **dog breeds** using pretrained CNNs from PyTorch
-- 📊 Calculates accuracy metrics for:
+- ✅ Detects whether an image contains a **dog** or not.
+- 🐕 Identifies **dog breeds** using pretrained CNNs from PyTorch.
+- 📊 Computes accuracy metrics for:
   - Dog detection
   - Breed classification
-  - Not-a-dog filtering
-- 💡 Supports image formats like `.jpg`, `.jpeg`, `.png`, and skips unsupported ones
-- 🧠 Clean modular Python code with CLI support and results output to file
+  - Non-dog filtering
+- 🖼️ Skips unsupported image formats automatically.
+- 📝 Outputs detailed classification results to a file.
+
+---
+
+## 🧠 Technologies Used
+
+- Python 3
+- PyTorch (`torch`, `torchvision`)
+- Pillow (PIL)
+- argparse
 
 ---
 
@@ -21,26 +31,52 @@ A Python-based image classification project that utilizes pretrained convolution
 
 ```
 
-.
-├── pet\_images/           # Folder containing test images
-├── check\_images.py       # Main program to execute the classification pipeline
-├── classifier.py         # Pretrained CNN-based classification function
-├── dognames.txt          # File containing valid dog breed names
-├── results.txt           # Output file with classification results
-├── README.md             # This documentation file
-└── requirements.txt      # Project dependencies (optional)
+dog-image-classifier/
+├── pet\_images/              # Folder containing test images
+├── classifier.py            # CNN-based image classification function
+├── check\_images.py          # Main program: runs full classification pipeline
+├── dognames.txt             # List of valid dog breed names
+├── results.txt              # Output file containing results
+├── requirements.txt         # Required dependencies
+└── README.md                # Project documentation
 
 ````
 
 ---
 
-## 🧪 Usage
+## ⚙️ Setup Instructions
 
-### 🛠 Run the Classifier
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/dog-image-classifier.git
+cd dog-image-classifier
+````
+
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate      # On Windows: venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🧪 How to Run
+
+Make sure your images are inside the `pet_images/` folder and each image filename contains the true label (e.g., `golden_retriever_01.jpg`).
+
+Then run:
 
 ```bash
 python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt
-````
+```
 
 ### CLI Arguments
 
@@ -48,64 +84,51 @@ python check_images.py --dir pet_images/ --arch vgg --dogfile dognames.txt
 | ----------- | --------------------------------------------------- | -------------- |
 | `--dir`     | Path to the folder of pet images                    | `pet_images/`  |
 | `--arch`    | CNN model architecture (`vgg`, `resnet`, `alexnet`) | `vgg`          |
-| `--dogfile` | File with list of valid dog names                   | `dognames.txt` |
+| `--dogfile` | Text file containing valid dog names                | `dognames.txt` |
 
 ---
 
 ## ✅ Sample Output
 
 ```
+📈 Final Statistics Report
 📸 Total Images: 50
 🐶 Dog Images: 42
 🚫 Not-a-Dog Images: 8
-✅ Correctly Classified Dogs: 40
-🎯 Correct Dog Breeds: 33
+✅ Correctly Classified Dogs: 39
+🎯 Correct Dog Breeds: 32
 ❌ Correctly Classified 'Not-a-Dog': 8
 
 🔢 Accuracy Metrics:
-    % Correct Dogs:     95.2%
-    % Correct Breeds:   78.6%
+    % Correct Dogs:     92.9%
+    % Correct Breeds:   76.2%
     % Correct NotDogs:  100.0%
 ```
 
-Results are saved automatically to `results.txt`.
+All results are saved automatically to `results.txt`.
 
 ---
 
-## 📦 Installation
+## 📦 requirements.txt
 
-```bash
-git clone https://github.com/YOUR_USERNAME/dog-image-classifier.git
-cd dog-image-classifier
-
-python -m venv venv
-source venv/bin/activate      # or venv\\Scripts\\activate on Windows
-
-pip install -r requirements.txt
+```txt
+torch>=2.0.0
+torchvision>=0.15.0
+Pillow>=10.0.0
 ```
 
-> You can generate `requirements.txt` using:
->
-> ```bash
-> pip freeze > requirements.txt
-> ```
+To install:
 
----
-
-## 🧠 Technologies Used
-
-* Python 3
-* PyTorch (`torch`, `torchvision`)
-* PIL (Pillow)
-* argparse
-* Pretrained CNNs (ImageNet weights)
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
 ## 📄 License
 
-MIT License © 2025 Your Name
-Feel free to use and modify this project for learning and research purposes.
+MIT License © 2025 Batool Shilleh
+Feel free to use, fork, or contribute to the project.
 
 ---
 
@@ -113,5 +136,5 @@ Feel free to use and modify this project for learning and research purposes.
 
 * [PyTorch Models](https://pytorch.org/vision/stable/models.html)
 * [ImageNet Dataset](http://www.image-net.org/)
-* Udacity AI Programming with Python Nanodegree (Inspiration)
+* Udacity - AI Programming with Python Nanodegree
 
