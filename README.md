@@ -170,6 +170,3 @@ Feel free to use, fork, or contribute to the project.
 * [PyTorch Pretrained Models](https://pytorch.org/vision/stable/models.html)
 * [ImageNet Dataset](http://www.image-net.org/)
 * Udacity AI Programming with Python Nanodegree (Inspiration)
-
-```
-
